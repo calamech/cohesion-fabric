@@ -60,6 +60,17 @@ src/main/java/dev/cohesion/
 - `servers/fabric-1.21.8-2/` — Port 25566, mod: carry-on
 - Both use `itzg/minecraft-server` image with `MODRINTH_PROJECTS` multiline format
 
+## Branching & Release Strategy
+- **One long-lived branch per MC version**: `main` = latest MC (1.21.8), `mc/1.21.2` = MC 1.21.2, etc.
+- Branches are **never merged** into each other — they live in parallel
+- **Versioning**: `<mod_version>+mc<mc_version>` (e.g. `1.0.0+mc1.21.2`)
+- **Releases**: tag + GitHub Release from the corresponding branch (not from main)
+  - Tag format: `v1.0.0+mc1.21.2`
+  - Attach the built jar to the release
+  - Use pre-release for testing, promote to stable once validated
+- **PRs are not used** for MC version branches (they don't target main). Use PRs only for feature branches within a given MC version.
+- New features: develop on `main`, then cherry-pick/adapt to other MC branches as needed
+
 ## Important Notes
 - `CustomPacketPayload` + `StreamCodec` API (not the older `FabricPacket` API)
 - `PayloadTypeRegistry.configurationS2C()` / `configurationC2S()` for packet registration
