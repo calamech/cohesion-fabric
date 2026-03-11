@@ -56,9 +56,10 @@ src/main/java/dev/cohesion/
 ```
 
 ## Test Servers (Docker)
-- `servers/fabric-1.21.8/` — Port 25565, mod: waystones (+ balm dependency)
-- `servers/fabric-1.21.8-2/` — Port 25566, mod: carry-on
-- Both use `itzg/minecraft-server` image with `MODRINTH_PROJECTS` multiline format
+- `servers/fabric-1.21.2/` — Port 25567, mod: waystones
+- Use `itzg/minecraft-server` image with `MODRINTH_PROJECTS` multiline format
+- **Always use `ONLINE_MODE: "TRUE"`** — test servers must run in online mode
+- **Always use server+client mods** for testing (not client-only mods like Mod Menu)
 
 ## Important Notes
 - `CustomPacketPayload` + `StreamCodec` API (not the older `FabricPacket` API)
