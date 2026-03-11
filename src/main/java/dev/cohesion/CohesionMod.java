@@ -31,7 +31,7 @@ public class CohesionMod implements ModInitializer {
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             try {
                 // Pass the MC version so dependencies can be resolved for the right game version
-                String mcVersion = net.minecraft.SharedConstants.getCurrentVersion().name();
+                String mcVersion = net.minecraft.SharedConstants.getCurrentVersion().getName();
                 ServerModResolver.setServerMcVersion(mcVersion);
                 LOGGER.info("Server MC version: {}", mcVersion);
 
