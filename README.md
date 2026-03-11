@@ -48,7 +48,7 @@ When a player connects, the server sends its mod manifest during the Configurati
 
 ## Client Setup
 
-1. Install the Cohesion mod jar on the client (in `.minecraft/mods/`).
+1. Install the Cohesion mod jar on the client (in `.minecraft/mods/`). You also need **Fabric API** matching your Minecraft version (download from [Modrinth](https://modrinth.com/mod/fabric-api)).
 2. Connect to a Cohesion-enabled server.
 3. If mods need to be installed/updated/removed, a sync screen appears listing the changes.
 4. Click **Sync & Restart** to download mods and prepare changes, then close and relaunch the game.
