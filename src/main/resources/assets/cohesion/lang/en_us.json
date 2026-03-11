@@ -1,0 +1,13 @@
+{
+  "cohesion.sync.title": "Cohesion - Mod Sync",
+  "cohesion.sync.up_to_date": "All mods are up to date!",
+  "cohesion.sync.changes_required": "The server requires mod changes:",
+  "cohesion.sync.action.install": "INSTALL",
+  "cohesion.sync.action.update": "UPDATE",
+  "cohesion.sync.action.remove": "REMOVE",
+  "cohesion.sync.button.sync_restart": "Sync & Restart",
+  "cohesion.sync.button.disconnect": "Disconnect",
+  "cohesion.sync.downloading": "Downloading %s...",
+  "cohesion.sync.progress": "Progress: %d / %d",
+  "cohesion.sync.error": "Error: %s"
+}

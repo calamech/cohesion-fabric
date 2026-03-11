@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "cohesion",
+  "version": "${version}",
+  "name": "Cohesion",
+  "description": "Synchronizes mods from server to client via the Modrinth API.",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/cohesion/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["dev.cohesion.CohesionMod"],
+    "client": ["dev.cohesion.client.CohesionClientMod"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "fabric-api": "*",
+    "minecraft": ">=1.21",
+    "java": ">=21"
+  }
+}
