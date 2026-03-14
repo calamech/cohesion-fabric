@@ -11,7 +11,7 @@ import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerConfigurationConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerConfigurationNetworking;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,7 +46,7 @@ public class CohesionMod implements ModInitializer {
         // BEFORE the Fabric registry sync task (which registers in BEFORE_CONFIGURE default phase).
         // This is critical: if the client is missing mods, our task blocks the config
         // phase before registry sync sends entries the client doesn't know about.
-        ResourceLocation earlyPhase = ResourceLocation.fromNamespaceAndPath(CohesionConstants.MOD_ID, "early");
+        Identifier earlyPhase = Identifier.fromNamespaceAndPath(CohesionConstants.MOD_ID, "early");
         ServerConfigurationConnectionEvents.BEFORE_CONFIGURE.addPhaseOrdering(earlyPhase, net.fabricmc.fabric.api.event.Event.DEFAULT_PHASE);
         ServerConfigurationConnectionEvents.BEFORE_CONFIGURE.register(earlyPhase, (handler, server) -> {
             if (ServerConfigurationNetworking.canSend(handler, ModManifestS2CPayload.TYPE)) {

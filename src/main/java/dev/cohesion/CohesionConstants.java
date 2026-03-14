@@ -1,13 +1,13 @@
 package dev.cohesion;
 
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public final class CohesionConstants {
 
     public static final String MOD_ID = "cohesion";
 
-    public static final ResourceLocation MOD_MANIFEST_PACKET_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "mod_manifest");
-    public static final ResourceLocation MANIFEST_ACK_PACKET_ID = ResourceLocation.fromNamespaceAndPath(MOD_ID, "manifest_ack");
+    public static final Identifier MOD_MANIFEST_PACKET_ID = Identifier.fromNamespaceAndPath(MOD_ID, "mod_manifest");
+    public static final Identifier MANIFEST_ACK_PACKET_ID = Identifier.fromNamespaceAndPath(MOD_ID, "manifest_ack");
 
     public static final String CACHE_DIR_NAME = "cohesion";
     public static final String CACHE_SUBDIR = "cache";
