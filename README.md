@@ -100,6 +100,12 @@ dev.cohesion/
 
 The mod jar is output to `build/libs/`.
 
+## Security
+
+Cohesion only downloads mods hosted on [Modrinth](https://modrinth.com/). A server operator cannot point clients to arbitrary URLs or inject custom JAR files — every mod in the manifest must correspond to a valid Modrinth version ID, which is resolved and verified through the official Modrinth API. Additionally, all downloaded files are checked against their expected SHA-512 hash before being placed in the `mods/` folder.
+
+This means a malicious server cannot use Cohesion as a vector for remote code execution via custom JARs. The attack surface is limited to mods that have been published on Modrinth and pass integrity verification.
+
 ## AI Usage Policy
 
 This mod was developed with the help of AI tools, and their use is encouraged for contributing — including leveraging AI skills and assistants. However, **we do not accept low-effort, AI-generated pull requests**. If you use AI to write code, you are expected to understand every line it produces before submitting a PR. Reviewers will ask questions, and contributors should be able to explain and defend their changes.
