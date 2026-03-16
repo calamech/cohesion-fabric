@@ -100,6 +100,12 @@ dev.cohesion/
 
 The mod jar is output to `build/libs/`.
 
+## AI Usage Policy
+
+This mod was developed with the help of AI tools, and their use is encouraged for contributing — including leveraging AI skills and assistants. However, **we do not accept low-effort, AI-generated pull requests**. If you use AI to write code, you are expected to understand every line it produces before submitting a PR. Reviewers will ask questions, and contributors should be able to explain and defend their changes.
+
+In short: AI is a tool, not a substitute for understanding.
+
 ## License
 
 See [LICENSE](LICENSE).
