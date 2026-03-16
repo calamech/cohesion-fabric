@@ -20,6 +20,10 @@ Play on multiple servers? No problem. Each time you connect, Cohesion adjusts yo
 - **Your personal mods are safe.** Cohesion only manages mods it installed. Anything you added yourself stays untouched.
 - **Essential mods are protected.** Fabric API, Fabric Loader, and Cohesion itself are never removed, no matter what.
 
+## Security
+
+Cohesion only downloads mods hosted on [Modrinth](https://modrinth.com/). A server cannot point your game to arbitrary downloads or sneak in files that aren't published on Modrinth. Every mod is verified through the official Modrinth API before it's installed, so there's no risk of a malicious server pushing harmful files to your game.
+
 ## For server owners
 
 Add Cohesion to your server and define which mods your players need in a simple config file. When players connect, they'll be prompted to sync — no more troubleshooting broken mod lists or writing setup guides. Players without Cohesion can still join normally.
