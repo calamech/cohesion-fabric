@@ -5,7 +5,7 @@ import dev.cohesion.client.ModSyncManager.SyncAction;
 import dev.cohesion.network.ManifestAckC2SPayload;
 import net.fabricmc.fabric.api.client.networking.v1.ClientConfigurationNetworking;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -82,7 +82,7 @@ public class SyncScreen extends Screen {
                     ModSyncManager.spawnJanitor(
                             Minecraft.getInstance().gameDirectory.toPath());
 
-                    Minecraft.getInstance().setScreen(new SyncCompleteScreen());
+                    Minecraft.getInstance().gui.setScreen(new SyncCompleteScreen());
                 } catch (Exception e) {
                     statusMessage = "Error: " + e.getMessage();
                     syncFailed = true;
@@ -103,20 +103,20 @@ public class SyncScreen extends Screen {
         networkContext.responseSender().sendPacket(new ManifestAckC2SPayload(false));
         // Return to multiplayer screen
         if (this.minecraft != null) {
-            this.minecraft.setScreen(new net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen(
+            this.minecraft.gui.setScreen(new net.minecraft.client.gui.screens.multiplayer.JoinMultiplayerScreen(
                     new net.minecraft.client.gui.screens.TitleScreen()));
         }
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        super.render(graphics, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        super.extractRenderState(graphics, mouseX, mouseY, delta);
 
         // Title (0xFF prefix = full alpha)
-        graphics.drawCenteredString(this.font, this.title, this.width / 2, 15, 0xFFFFFFFF);
+        graphics.centeredText(this.font, this.title, this.width / 2, 15, 0xFFFFFFFF);
 
         // Subtitle
-        graphics.drawCenteredString(this.font,
+        graphics.centeredText(this.font,
                 "The server requires mod changes:",
                 this.width / 2, 30, 0xFFAAAAAA);
 
@@ -144,14 +144,14 @@ public class SyncScreen extends Screen {
                 line = actionLabel + " " + action.entry().slug() + " (" + action.entry().filename() + ")";
             }
 
-            graphics.drawString(this.font, line, leftMargin, y, color);
+            graphics.text(this.font, line, leftMargin, y, color);
             y += 14;
         }
 
         // Status message
         if (!statusMessage.isEmpty()) {
             int statusColor = syncFailed ? 0xFFFF5555 : (syncComplete ? 0xFF55FF55 : 0xFFFFFF55);
-            graphics.drawCenteredString(this.font, statusMessage,
+            graphics.centeredText(this.font, statusMessage,
                     this.width / 2, this.height - 55, statusColor);
         }
     }

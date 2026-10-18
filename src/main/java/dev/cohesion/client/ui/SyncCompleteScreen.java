@@ -1,7 +1,7 @@
 package dev.cohesion.client.ui;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.GuiGraphicsExtractor;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -27,17 +27,17 @@ public class SyncCompleteScreen extends Screen {
     }
 
     @Override
-    public void render(GuiGraphics graphics, int mouseX, int mouseY, float delta) {
-        super.render(graphics, mouseX, mouseY, delta);
+    public void extractRenderState(GuiGraphicsExtractor graphics, int mouseX, int mouseY, float delta) {
+        super.extractRenderState(graphics, mouseX, mouseY, delta);
 
-        graphics.drawCenteredString(this.font, this.title,
+        graphics.centeredText(this.font, this.title,
                 this.width / 2, this.height / 2 - 30, 0xFF55FF55);
 
-        graphics.drawCenteredString(this.font,
+        graphics.centeredText(this.font,
                 "Mods have been downloaded and installed.",
                 this.width / 2, this.height / 2 - 10, 0xFFFFFFFF);
 
-        graphics.drawCenteredString(this.font,
+        graphics.centeredText(this.font,
                 "Please restart your game to apply changes.",
                 this.width / 2, this.height / 2 + 5, 0xFFAAAAAA);
     }

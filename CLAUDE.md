@@ -4,8 +4,8 @@
 Fabric mod that syncs mods between server and client using the Modrinth API. Server defines required mods in `config/cohesion_server.json` with Modrinth version IDs. Client downloads/removes mods automatically during the Configuration networking phase.
 
 ## Tech Stack
-- Fabric Loader, Fabric API, Java 21+
-- Mojang mappings (not Yarn)
+- Fabric Loader, Fabric API, Java 25+
+- MC 26.x ships unobfuscated: no mappings, plugin `net.fabricmc.fabric-loom`, `implementation` (not `modImplementation`)
 - Gradle with fabric-loom
 - No external deps beyond what MC bundles (Gson, SLF4J)
 
@@ -73,4 +73,5 @@ src/main/java/dev/cohesion/
 
 ## Important Notes
 - `CustomPacketPayload` + `StreamCodec` API (not the older `FabricPacket` API)
-- `PayloadTypeRegistry.configurationS2C()` / `configurationC2S()` for packet registration
+- `PayloadTypeRegistry.clientboundConfiguration()` / `serverboundConfiguration()` for packet registration
+- Screens: `Minecraft.gui.setScreen()` (not `Minecraft.setScreen()`), render via `extractRenderState(GuiGraphicsExtractor, ...)`

@@ -22,7 +22,7 @@ public class ModSyncConfigurationTask implements ConfigurationTask {
     @Override
     public void start(Consumer<Packet<?>> sender) {
         ModManifestS2CPayload payload = new ModManifestS2CPayload(modEntries);
-        sender.accept(ServerConfigurationNetworking.createS2CPacket(payload));
+        sender.accept(ServerConfigurationNetworking.createClientboundPacket(payload));
     }
 
     @Override

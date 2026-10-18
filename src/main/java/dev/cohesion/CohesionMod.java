@@ -24,8 +24,8 @@ public class CohesionMod implements ModInitializer {
         LOGGER.info("Cohesion initializing...");
 
         // Register payload types
-        PayloadTypeRegistry.configurationS2C().register(ModManifestS2CPayload.TYPE, ModManifestS2CPayload.STREAM_CODEC);
-        PayloadTypeRegistry.configurationC2S().register(ManifestAckC2SPayload.TYPE, ManifestAckC2SPayload.STREAM_CODEC);
+        PayloadTypeRegistry.clientboundConfiguration().register(ModManifestS2CPayload.TYPE, ModManifestS2CPayload.STREAM_CODEC);
+        PayloadTypeRegistry.serverboundConfiguration().register(ManifestAckC2SPayload.TYPE, ManifestAckC2SPayload.STREAM_CODEC);
 
         // Resolve mods from Modrinth on server start
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
@@ -62,10 +62,10 @@ public class CohesionMod implements ModInitializer {
                 (payload, context) -> {
                     if (payload.accepted()) {
                         LOGGER.info("Client accepted mod manifest.");
-                        context.networkHandler().completeTask(ModSyncConfigurationTask.TYPE);
+                        context.packetListener().completeTask(ModSyncConfigurationTask.TYPE);
                     } else {
                         LOGGER.info("Client declined mod manifest, disconnecting.");
-                        context.networkHandler().disconnect(
+                        context.packetListener().disconnect(
                                 Component.literal("You declined required mods from Cohesion.")
                         );
                     }

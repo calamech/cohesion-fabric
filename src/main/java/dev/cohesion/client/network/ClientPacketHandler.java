@@ -20,7 +20,7 @@ public class ClientPacketHandler {
         // If a previous sync session downloaded mods but the client hasn't restarted yet,
         // the mods are on disk but not loaded by Fabric. Don't auto-ack.
         if (ModSyncManager.isPendingRestart(gameDir)) {
-            client.execute(() -> client.setScreen(new SyncCompleteScreen()));
+            client.execute(() -> client.gui.setScreen(new SyncCompleteScreen()));
             return;
         }
 
@@ -30,7 +30,7 @@ public class ClientPacketHandler {
             context.responseSender().sendPacket(new ManifestAckC2SPayload(true));
         } else {
             client.execute(() -> {
-                client.setScreen(new SyncScreen(syncManager, context));
+                client.gui.setScreen(new SyncScreen(syncManager, context));
             });
         }
     }
