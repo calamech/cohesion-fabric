@@ -30,7 +30,6 @@ Scope is optional for broad changes.
 - Keep the first line under 72 characters
 - Use imperative mood ("add feature" not "added feature")
 - One commit per logical change
-- Always sign with: `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
 
 ## Examples
 ```
